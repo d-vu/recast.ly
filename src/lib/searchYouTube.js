@@ -17,13 +17,12 @@ var searchYouTube = (options, callback) => {
     videoEmbeddable: "true",
 
     success: function (response) {
-      console.log('success');
-      console.log('retrieved videos: ', response.items);
+      // console.log('success');
       if (callback) {
         callback(response.items);
       }
-      return response.items;
 
+      return response.items;
     },
     error: function (error) {
       console.log('fail');

@@ -7,6 +7,16 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    var options = {key: window.YOUTUBE_API_KEY, query: 'react', max: 5};
+    var context = this;
+    this.props.searchYouTube(options, function(response) {
+      context.setState({
+        allVideos: response
+      });
+    });
+  }
+
   render() {
     return (
       <div>
@@ -21,11 +31,21 @@ class App extends React.Component {
     );
   }
 
+
   onVideoItemClick(video) {
     this.setState({
       currentVideo: video
     });
   }
+
+  // onSearchItemSubmit() {
+  //   //grab query from searchbar
+  //   //var query = ...
+
+  //   this.setState({
+  //     allVideos: searchYoutube({key: YOUTUBE_API_KEY, query: query, max: 5})
+  //   })}
+  // }
 
 }
 
