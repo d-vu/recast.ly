@@ -20,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav onFetchQuery= {this.fetchQuery.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
@@ -37,6 +37,17 @@ class App extends React.Component {
       currentVideo: video
     });
   }
+
+  fetchQuery(query) {
+    var options = {key: window.YOUTUBE_API_KEY, query: query, max: 5};
+    var context = this;
+    this.props.searchYouTube(options, function(response) {
+      context.setState({
+        allVideos: response
+      });
+    });
+  }
+
 
   // onSearchItemSubmit() {
   //   //grab query from searchbar
