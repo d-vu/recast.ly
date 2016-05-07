@@ -24,7 +24,7 @@ class App extends React.Component {
   onVideoItemClick(video) {
     this.setState({
       currentVideo: video
-    })
+    });
   }
 
 }
