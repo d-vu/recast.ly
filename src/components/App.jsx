@@ -15,17 +15,16 @@ class App extends React.Component {
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
         <div  className="col-md-5">
-          <VideoList videos={this.state.allVideos} onClick= {this.onVideoItemClick}/>
+          <VideoList videos={this.state.allVideos} onClickEvent= {this.onVideoItemClick.bind(this)}/>
         </div>
       </div>   
     );
   }
 
-  onVideoItemClick() {
-    console.log('something clicked', this);
-    // this.setState({
-    //   currentVideo: //something
-    // })
+  onVideoItemClick(video) {
+    this.setState({
+      currentVideo: video
+    })
   }
 
 }
